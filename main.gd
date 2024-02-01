@@ -17,21 +17,25 @@ func _process(delta):
 	time += 0.1;
 	if($Line2D.get_point_count() > 0):
 		var closestCircle = get_closest_circle_position($Line2D.get_point_position(0))
-		$Line2D.set_point_position(1, closestCircle)
+		$Line2D.set_point_position(1, closestCircle.position)
 		$Line2D.set_point_position(0, get_global_mouse_position())
 		$MeshInstance2D.position = $Line2D.get_point_position(0)
-		var distance = closestCircle.distance_to(get_global_mouse_position()) - 50
+		var closestCircleRadius = closestCircle.get_child(0).shape.radius
+		var distance = closestCircle.position.distance_to(get_global_mouse_position()) - closestCircleRadius
 		$MeshInstance2D.mesh.radius = distance
 		$MeshInstance2D.mesh.height = distance * 2
 		
+		
 func get_closest_circle_position(target: Vector2):
-		var closest: Vector2;
+		#var closest: Vector2;
 		var circles =  get_tree().get_nodes_in_group("circle")
+		var closestCircle = circles[0]
+		var closest: Vector2 = circles[0].position
 		for x in circles:
 			if target.distance_to(x.position) <= target.distance_to(closest):
-				var circleRadius = x.get_child(0).shape.radius
 				closest = x.position;
-		return closest;
+				closestCircle = x;
+		return closestCircle;
 
 func drawCollisionShape(radius: float, position: Vector2):
 	var shape = CollisionShape2D.new()
@@ -52,7 +56,7 @@ func generate_circle_polygon(radius: float, num_sides: int, position: Vector2):
 
 	return polygon
 
-
 #func _draw():
 	#var godot_blue : Color = Color("478cbf")
 	#draw_polygon(generate_circle_polygon(100, 100, Vector2(500, 250)),[godot_blue] )
+

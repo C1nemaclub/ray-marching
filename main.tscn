@@ -17,7 +17,7 @@ height = 100.0
 script = ExtResource("1_m6f1f")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="."]
-modulate = Color(0, 0, 1, 1)
+modulate = Color(0.27451, 0.490196, 1, 1)
 mesh = SubResource("SphereMesh_q6s02")
 
 [node name="Line2D" type="Line2D" parent="."]
@@ -67,5 +67,15 @@ position = Vector2(553, 288)
 shape = SubResource("CircleShape2D_ew6qe")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Area2D4"]
+modulate = Color(1, 1, 1, 0.172549)
+mesh = SubResource("SphereMesh_x2m6o")
+
+[node name="Area2D5" type="Area2D" parent="." groups=["circle"]]
+position = Vector2(241, 185)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D5"]
+shape = SubResource("CircleShape2D_ew6qe")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Area2D5"]
 modulate = Color(1, 1, 1, 0.172549)
 mesh = SubResource("SphereMesh_x2m6o")
