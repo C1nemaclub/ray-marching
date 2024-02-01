@@ -1,0 +1,71 @@
+[gd_scene load_steps=5 format=3 uid="uid://bu4oe330y4tci"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_m6f1f"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_q6s02"]
+radius = 100.0
+height = 200.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ew6qe"]
+radius = 50.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_x2m6o"]
+radius = 50.0
+height = 100.0
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_m6f1f")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+modulate = Color(0, 0, 1, 1)
+mesh = SubResource("SphereMesh_q6s02")
+
+[node name="Line2D" type="Line2D" parent="."]
+texture_filter = 1
+points = PackedVector2Array(2, 238, 470, 648)
+width = 4.0
+default_color = Color(1, 0, 0, 0)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="Area2D" type="Area2D" parent="." groups=["circle"]]
+position = Vector2(756, 155)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_ew6qe")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Area2D"]
+modulate = Color(1, 1, 1, 0.172549)
+mesh = SubResource("SphereMesh_x2m6o")
+
+[node name="Area2D2" type="Area2D" parent="." groups=["circle"]]
+position = Vector2(401, 488)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+shape = SubResource("CircleShape2D_ew6qe")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Area2D2"]
+modulate = Color(1, 1, 1, 0.172549)
+mesh = SubResource("SphereMesh_x2m6o")
+
+[node name="Area2D3" type="Area2D" parent="." groups=["circle"]]
+position = Vector2(701, 424)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D3"]
+shape = SubResource("CircleShape2D_ew6qe")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Area2D3"]
+modulate = Color(1, 1, 1, 0.172549)
+mesh = SubResource("SphereMesh_x2m6o")
+
+[node name="Area2D4" type="Area2D" parent="." groups=["circle"]]
+position = Vector2(553, 288)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D4"]
+shape = SubResource("CircleShape2D_ew6qe")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Area2D4"]
+modulate = Color(1, 1, 1, 0.172549)
+mesh = SubResource("SphereMesh_x2m6o")
